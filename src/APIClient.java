@@ -47,7 +47,7 @@ public class APIClient {
 		TreeMap<String, String> creds = new TreeMap<String, String>();
 		creds.put("key", "YOUR_KEY_HERE");
 		creds.put("token", "YOUR_TOKEN_HERE");
-		creds.put("baseURL", "http://developers.polairus.com");
+		creds.put("baseURL", "http://developers.bluerover.us");
 		APIClient client = new APIClient(creds);
 		
 		client.scheduleEventCall(10);
