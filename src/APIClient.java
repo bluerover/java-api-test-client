@@ -4,7 +4,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.TreeMap;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+
 import com.bluerover.api.BlueroverApi;
+import com.bluerover.api.Result;
 
 public class APIClient {
 
@@ -33,20 +37,25 @@ public class APIClient {
 			times.put("start_time", Objects.toString(startTime, null));
 			times.put("end_time", Objects.toString(endTime, null));
 			times.put("page", "0");
-			String result = null;
+			Result result = null;
 			try {
-				result = api.callApi("/event", times, false);
+				result = api.getEvents(Objects.toString(
+						System.currentTimeMillis() / 1000L - 10 * 1000, null), Objects
+						.toString(System.currentTimeMillis() / 1000L, null), "0");
 			} catch (IOException e) {
+				System.err.println("Error with connecting to server");
+				e.printStackTrace();
+			} catch (ParseException e) {
+				System.err.println("improperly formatted json");
 				e.printStackTrace();
 			}
-			System.out.println(result);
 		}
 	}
 
 	public static void main(String[] args) throws Exception {
 		TreeMap<String, String> creds = new TreeMap<String, String>();
-		creds.put("key", "YOUR_KEY_HERE");
-		creds.put("token", "YOUR_TOKEN_HERE");
+		creds.put("key", "yXIJ1omZUNtbo6wNjMOkKYBLNJakn0nr/OzgVtDKh2i5lDktVT2xv5xfbYlCkW+Z");
+		creds.put("token", "9DquKlyhPKpZ35mxcjG/JUqWAd//U12O13ja6Wqp");
 		creds.put("baseURL", "http://developers.bluerover.us");
 		APIClient client = new APIClient(creds);
 		
