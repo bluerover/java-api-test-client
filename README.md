@@ -1,4 +1,4 @@
-java-api-client
+java-api-test-client
 ===============
 
-BlueRover Java API Client
+BlueRover Java API Test Client
