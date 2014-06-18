@@ -4,9 +4,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.TreeMap;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
-
 import com.bluerover.api.BlueroverApi;
 import com.bluerover.api.Result;
 
@@ -45,10 +42,8 @@ public class APIClient {
 			} catch (IOException e) {
 				System.err.println("Error with connecting to server");
 				e.printStackTrace();
-			} catch (ParseException e) {
-				System.err.println("improperly formatted json");
-				e.printStackTrace();
 			}
+			System.out.println(result);
 		}
 	}
 
