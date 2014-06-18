@@ -49,8 +49,8 @@ public class APIClient {
 
 	public static void main(String[] args) throws Exception {
 		TreeMap<String, String> creds = new TreeMap<String, String>();
-		creds.put("key", "yXIJ1omZUNtbo6wNjMOkKYBLNJakn0nr/OzgVtDKh2i5lDktVT2xv5xfbYlCkW+Z");
-		creds.put("token", "9DquKlyhPKpZ35mxcjG/JUqWAd//U12O13ja6Wqp");
+		creds.put("key", "YOUR_KEY_HERE");
+		creds.put("token", "YOUR_TOKEN_HERE");
 		creds.put("baseURL", "http://developers.bluerover.us");
 		APIClient client = new APIClient(creds);
 		
