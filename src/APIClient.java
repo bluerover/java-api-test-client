@@ -45,7 +45,7 @@ public class APIClient {
 			times.put("start_time", Objects.toString(startTime, null));
 			times.put("end_time", Objects.toString(endTime, null));
 			times.put("page", "0");
-			Result<Event> result = null;
+			Result<Event[]> result = null;
 			try {
 				result = api.getEvents(Objects.toString(
 						System.currentTimeMillis() / 1000L - 10 * 1000, null), Objects
@@ -62,7 +62,7 @@ public class APIClient {
 
 		@Override
 		public void run() {
-			Result<Device> result = null;
+			Result<Device[]> result = null;
 			try {
 				result = api.getDevices();
 			} catch (IOException e) {
@@ -77,7 +77,7 @@ public class APIClient {
 
 		@Override
 		public void run() {
-			Result<Rfid> result = null;
+			Result<Rfid[]> result = null;
 			try {
 				result = api.getRfids();
 			} catch (IOException e) {
