@@ -23,7 +23,7 @@ Public Methods
 
 * `void` **scheduleEventCall**(*seconds*)
 
-    Schedule a recurring getEvents(startTime,endTime,page) call that occurs every X seconds. It is currently set to fetch events that occured in the past 10 seconds.
+    Schedule a recurring getEvents(startTime,endTime,page) call that occurs every X seconds. It is currently set to fetch events that occured in the past 10 seconds. However, a **better** solution may be to use the previous call's end time in order to avoid disjoint sets.
 
     **Parameters:**
     
@@ -44,3 +44,19 @@ Public Methods
     **Parameters:**
     
       *   `int seconds` : number of seconds between each call
+
+###Standard operation
+
+```Java
+
+    //insert your credentials into the map
+    HashMap<String,String> creds = new HashMap<String,String>();
+    creds.put("key", "YOUR_KEY_HERE");
+	creds.put("token", "YOUR_TOKEN_HERE");
+	creds.put("baseURL", "http://developers.bluerover.us");
+    
+    APIClient client = new APIClient(creds);
+    
+    //Schedule a recurring event call every 10 seconds
+    client.scheduleEventCall(10);
+```
