@@ -5,6 +5,7 @@ import java.util.TimerTask;
 import java.util.TreeMap;
 
 import com.bluerover.api.BlueroverApi;
+import com.bluerover.events.CallBack;
 import com.bluerover.model.Device;
 import com.bluerover.model.Event;
 import com.bluerover.model.Result;
@@ -34,6 +35,18 @@ public class APIClient {
 		timer.scheduleAtFixedRate(new callRfidTask(), 0, seconds * 1000);
 	}
 	
+	/**
+	 * 
+	 * @param pCallBack	Callback done whenever event data is received from stream
+	 */
+	public void startEventStream(CallBack pCallBack) {
+		try {
+			api.getEventStream(pCallBack);
+		} catch (IOException e) {
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
 	class callEventTask extends TimerTask {
 
 		@Override
@@ -95,8 +108,9 @@ public class APIClient {
 		creds.put("baseURL", "http://developers.bluerover.us");
 		APIClient client = new APIClient(creds);
 		
-		client.scheduleEventCall(10);
+		//client.scheduleEventCall(10);
 		//client.scheduleDeviceCall(5);
 		//client.scheduleRfidCall(5);
+		client.startEventStream(new SampleCallBack());
 	}
 }
