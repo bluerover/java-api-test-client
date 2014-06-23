@@ -44,7 +44,17 @@ Public Methods
     **Parameters:**
     
       *   `int seconds` : number of seconds between each call
+      
+* `void` **startEventStream**(*pCallBack*)
 
+    API Request to start the event stream, calling pCallBack when data is received.
+    
+    Define pCallBack by implementing the CallBack class. A sample callback (class SampleCallBack) is provided.
+
+    **Parameters:**
+
+      * `CallBack pCallBack` : Implementation of CallBack that defines behaviour on data received
+      
 ###Standard operation
 
 ```Java
@@ -59,4 +69,7 @@ Public Methods
     
     //Schedule a recurring event call every 10 seconds
     client.scheduleEventCall(10);
+    
+    //Start the event stream
+    client.startEventStream(new SampleCallBack());
 ```
